@@ -22,7 +22,26 @@ class Stock_Quote_API_Demo_ProjectTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StockSymbolsViewController") as! StockSymbolsViewController
+        /*
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        viewController = storyboard.instantiateViewController(withIdentifier: "StockSymbolsViewController") as! StockSymbolsViewController
+        //UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StockSymbolsViewController") as! StockSymbolsViewController
+        
+        let stockObject = StockObject(symbol: "YHOO", lastTradePriceOnly: "123.43")
+        stockObject.symbol = "YHOO"
+        stockObject.lastTradePriceOnly = "123.43"
+        
+        tableView = UITableView()
+        
+        viewController.stockSymbolsArray.append(stockObject)
+        viewController.tableView = tableView
+        viewController.tableView.delegate = viewController
+        viewController.tableView.dataSource = viewController
+        
+        _ = viewController.view
+        
+        //viewController.performSelector(onMainThread: #selector(viewController.loadView), with: nil, waitUntilDone: true)
+ */
     }
     
     override func tearDown() {
@@ -46,18 +65,9 @@ class Stock_Quote_API_Demo_ProjectTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-            viewController = StockSymbolsViewController()
-    
-            let stockObject = StockObject()
-            stockObject.symbol = "YHOO"
-            stockObject.lastTradePriceOnly = "123.43"
-    
-            viewController.stockSymbolsArray.append(stockObject)
+       // let expectedRows = 1
         
-            tableView = UITableView()
-            tableView.register(UITableViewCell.self,
-                               forCellReuseIdentifier: "StockTableViewCell")
-            tableView.dataSource = viewController
+       // XCTAssertTrue(tableView.numberOfRows(inSection: 0) < expectedRows, "Not enough rows")
     }
     
     //MARK: Performance

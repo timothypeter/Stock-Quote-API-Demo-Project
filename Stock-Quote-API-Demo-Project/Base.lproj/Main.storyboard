@@ -71,6 +71,9 @@
                                                 <constraint firstItem="Bp9-DN-WBI" firstAttribute="leading" secondItem="CO8-KD-BgK" secondAttribute="leadingMargin" id="qJg-bg-6jE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <outlet property="lastTradePriceOnlyLabel" destination="J2b-zC-tZp" id="DwX-rj-ORR"/>
                                             <outlet property="symbolLabel" destination="Bp9-DN-WBI" id="swy-DR-5jN"/>

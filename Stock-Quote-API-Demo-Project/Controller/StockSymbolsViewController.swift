@@ -49,15 +49,19 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
                     for element in arrayOfQuotes!{
                         
                         //Initialize a stock object, and then place it into an array of stock objects to populate our table view with
-                        let stockObject = StockObject()
-                        stockObject.symbol = element["symbol"].stringValue
-                        stockObject.name = element["Name"].stringValue
-                        stockObject.lastTradePriceOnly = element["LastTradePriceOnly"].stringValue
                         
-                        if(!stockObject.symbol.isEmpty && !stockObject.lastTradePriceOnly.isEmpty){
-                            //Insert the newly created stock object into an array
-                            self.stockSymbolsArray.append(stockObject)
+                        let symbol = element["symbol"].stringValue
+                        let lastTradePriceOnly = element["LastTradePriceOnly"].stringValue
+                        
+                        //If either is empty, we don't want to add it to our array.
+                        if(symbol.isEmpty || lastTradePriceOnly.isEmpty){
+                            continue
                         }
+                        
+                        //I have a unit test set up to make sure that this only initializes if the strings being passed aren't empty, but the code above this comment would prevent that from being the case anyway.
+                        let stockObject = StockObject(symbol: symbol, lastTradePriceOnly: lastTradePriceOnly)
+
+                        self.stockSymbolsArray.append(stockObject)
                     }
                     
                     self.tableView.reloadData()

@@ -28,9 +28,17 @@ class Stock_Quote_API_Demo_ProjectUITests: XCTestCase {
         super.tearDown()
     }
     
+    //My first functional UI test, even if basic.
     func testExample() {
         // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let tablesQuery = XCUIApplication().tables
+        let msft7881Cell = tablesQuery.cells["MSFT, 78.81"]
+        msft7881Cell.swipeUp()
+        tablesQuery.cells["AAPL, 156.25"].swipeDown()
+        tablesQuery.cells["GOOG, 988.20"].tap()
+        msft7881Cell.tap()
+                                                // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
 }

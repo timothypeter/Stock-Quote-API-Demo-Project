@@ -12,4 +12,9 @@ class StockObject: NSObject{
     var name: String = ""
     var symbol: String = ""
     var lastTradePriceOnly: String = ""
+    
+    init(symbol: String, lastTradePriceOnly: String){
+        self.symbol = symbol
+        self.lastTradePriceOnly = lastTradePriceOnly
+    }
 }

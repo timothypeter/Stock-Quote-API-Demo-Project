@@ -36,8 +36,6 @@ public enum Router: URLRequestConvertible {
         case .getStockInfo(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with:  parameters)
             print(urlRequest)
-        default:
-            break
         }
         
        // urlRequest.setValue(Router.githubAcceptStringV3, forHTTPHeaderField: "Accept")
