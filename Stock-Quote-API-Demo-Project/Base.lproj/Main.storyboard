@@ -10,20 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Stock_Quote_API_Demo_Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
         <!--Stock Symbols-->
         <scene sceneID="rJw-Sf-M0D">
             <objects>
@@ -44,25 +30,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YHOO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bp9-DN-WBI">
-                                                    <rect key="frame" x="8" y="29" width="103" height="54"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="103" id="I18-xY-RjJ"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="8" y="29" width="48.5" height="54"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="172.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2b-zC-tZp">
-                                                    <rect key="frame" x="259" y="24" width="108" height="59"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="108" id="V76-KP-73p"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="315.5" y="24" width="51.5" height="59"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Bp9-DN-WBI" secondAttribute="trailingMargin" id="1Kx-GZ-Qd0"/>
+                                                <constraint firstItem="J2b-zC-tZp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CO8-KD-BgK" secondAttribute="leadingMargin" id="YrS-mA-hpb"/>
                                                 <constraint firstItem="Bp9-DN-WBI" firstAttribute="top" secondItem="CO8-KD-BgK" secondAttribute="topMargin" constant="21" id="crx-pX-b3L"/>
                                                 <constraint firstItem="Bp9-DN-WBI" firstAttribute="centerY" secondItem="CO8-KD-BgK" secondAttribute="centerY" id="fhO-jS-jb7"/>
                                                 <constraint firstItem="Bp9-DN-WBI" firstAttribute="baseline" secondItem="J2b-zC-tZp" secondAttribute="baseline" id="gIn-2v-lpg"/>
@@ -99,11 +81,27 @@
                     <navigationItem key="navigationItem" title="Stock Symbols" id="APy-qe-8HX"/>
                     <connections>
                         <outlet property="tableView" destination="ju2-DM-8eK" id="qjZ-Xi-98a"/>
+                        <segue destination="j2x-1z-NV4" kind="show" identifier="SHOWDETAILSVIEWCONTROLLER" id="Bru-V5-Ifz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7w-7v-wCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1856.8" y="129.98500749625188"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="lQ2-Wn-oOF">
+            <objects>
+                <viewController title="Details" id="j2x-1z-NV4" customClass="DetailsViewController" customModule="Stock_Quote_API_Demo_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7dR-oA-GdI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="TI0-rA-aIX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JtV-P5-Ivg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2684" y="130"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="49o-pm-tS7">

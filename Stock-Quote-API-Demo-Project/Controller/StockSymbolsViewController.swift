@@ -102,4 +102,16 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "SHOWDETAILSVIEWCONTROLLER", sender: self)
+    }
+    
+    //MARK: Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "SHOWDETAILSVIEWCONTROLLER"){
+            
+        }
+    }
 }
