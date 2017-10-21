@@ -31,7 +31,6 @@ class StockObjectTest: XCTestCase {
     
     func testForSymbolAndTradePrice() {
         //Make sure that a stock object can't initialize properly without having
-        
         //Generates a failure when expression == true. Equivalent to XCTAssert. - Apple documentation
         XCTAssertFalse((stockObject.symbol.isEmpty) && (stockObject.lastTradePriceOnly.isEmpty), "Stock object has an empty symbol or price!")
     }
