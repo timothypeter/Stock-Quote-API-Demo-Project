@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +27,7 @@
         <!--Stock Symbols-->
         <scene sceneID="rJw-Sf-M0D">
             <objects>
-                <viewController id="ELF-9D-wCY" customClass="StockSymbolsViewController" customModule="Stock_Quote_API_Demo_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StockSymbolsViewController" id="ELF-9D-wCY" customClass="StockSymbolsViewController" customModule="Stock_Quote_API_Demo_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="weC-E2-yaa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,6 +35,53 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ju2-DM-8eK">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StockTableViewCell" rowHeight="113" id="lVx-72-o7w" customClass="StockTableViewCell" customModule="Stock_Quote_API_Demo_Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="113"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lVx-72-o7w" id="CO8-KD-BgK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YHOO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bp9-DN-WBI">
+                                                    <rect key="frame" x="8" y="29" width="103" height="54"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="103" id="I18-xY-RjJ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="172.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2b-zC-tZp">
+                                                    <rect key="frame" x="259" y="24" width="108" height="59"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="108" id="V76-KP-73p"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Bp9-DN-WBI" firstAttribute="top" secondItem="CO8-KD-BgK" secondAttribute="topMargin" constant="21" id="crx-pX-b3L"/>
+                                                <constraint firstItem="Bp9-DN-WBI" firstAttribute="centerY" secondItem="CO8-KD-BgK" secondAttribute="centerY" id="fhO-jS-jb7"/>
+                                                <constraint firstItem="Bp9-DN-WBI" firstAttribute="baseline" secondItem="J2b-zC-tZp" secondAttribute="baseline" id="gIn-2v-lpg"/>
+                                                <constraint firstItem="J2b-zC-tZp" firstAttribute="top" secondItem="CO8-KD-BgK" secondAttribute="topMargin" constant="16" id="isH-Np-hQl"/>
+                                                <constraint firstItem="J2b-zC-tZp" firstAttribute="trailing" secondItem="CO8-KD-BgK" secondAttribute="trailingMargin" id="myA-Yz-Kz8"/>
+                                                <constraint firstItem="Bp9-DN-WBI" firstAttribute="leading" secondItem="CO8-KD-BgK" secondAttribute="leadingMargin" id="qJg-bg-6jE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lastTradePriceOnlyLabel" destination="J2b-zC-tZp" id="DwX-rj-ORR"/>
+                                            <outlet property="symbolLabel" destination="Bp9-DN-WBI" id="swy-DR-5jN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ELF-9D-wCY" id="8SQ-7X-zxu"/>
+                                    <outlet property="delegate" destination="ELF-9D-wCY" id="zE5-lB-zQA"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

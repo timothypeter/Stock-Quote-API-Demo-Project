@@ -7,13 +7,22 @@
 //
 
 import XCTest
+
 @testable import Stock_Quote_API_Demo_Project
+@testable import SwiftyJSON
+@testable import Alamofire
 
 class Stock_Quote_API_Demo_ProjectTests: XCTestCase {
     
+    var viewController: StockSymbolsViewController!
+    var tableView: UITableView!
+    
+    //MARK: setUp and tearDown
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StockSymbolsViewController") as! StockSymbolsViewController
     }
     
     override func tearDown() {
@@ -21,11 +30,37 @@ class Stock_Quote_API_Demo_ProjectTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    //MARK: - UITableViewTests
+    
+    func testTableViewIsConnectedToDelegate()
+    {
+        XCTAssertNotNil(viewController.tableView.delegate, "Table delegate cannot be nil");
     }
     
+    func testThatViewConformsToUITableViewDataSource()
+    {
+        XCTAssertTrue(viewController.conforms(to: UITableViewDataSource.self), "View does not conform to UITableView datasource protocol")
+    }
+    
+    func testStockSymbolsViewControllerTableView() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+            viewController = StockSymbolsViewController()
+    
+            let stockObject = StockObject()
+            stockObject.symbol = "YHOO"
+            stockObject.lastTradePriceOnly = "123.43"
+    
+            viewController.stockSymbolsArray.append(stockObject)
+        
+            tableView = UITableView()
+            tableView.register(UITableViewCell.self,
+                               forCellReuseIdentifier: "StockTableViewCell")
+            tableView.dataSource = viewController
+    }
+    
+    //MARK: Performance
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
