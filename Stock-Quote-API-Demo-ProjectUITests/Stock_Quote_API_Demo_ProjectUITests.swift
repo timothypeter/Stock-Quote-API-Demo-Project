@@ -47,15 +47,4 @@ class Stock_Quote_API_Demo_ProjectUITests: XCTestCase {
         app.tables.cells["AAPL, 156.25"].tap()
         app.navigationBars["Details"].buttons["Stock Symbols"].tap()
     }
-    
-    
-    func testExample() {
-        let tablesQuery = XCUIApplication().tables
-        let msft7881Cell = tablesQuery.cells["MSFT, 78.81"]
-        msft7881Cell.swipeUp()
-        tablesQuery.cells["AAPL, 156.25"].swipeDown()
-        tablesQuery.cells["GOOG, 988.20"].tap()
-        msft7881Cell.tap()
-    }
-    
 }

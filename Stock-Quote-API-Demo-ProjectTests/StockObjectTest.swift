@@ -25,13 +25,15 @@ class StockObjectTest: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        
+        //Best practice to set to nil in teardown when done. This obviously can't be done on strings because in Swift you can't set a string to nil.
         stockObject = nil
     }
     
+    //I don't want a stock object to be added to my tableView if it doesn't have a symbol or a trade price. It must have bother. The object is allowed to initialize, but it will not be used.
     func testForSymbolAndTradePrice() {
-        //Make sure that a stock object can't initialize properly without having
-        //Generates a failure when expression == true. Equivalent to XCTAssert. - Apple documentation
-        XCTAssertFalse((stockObject.symbol.isEmpty) && (stockObject.lastTradePriceOnly.isEmpty), "Stock object has an empty symbol or price!")
+        //Generates a failure when expression == false.
+        XCTAssertTrue(stockObject.verifySuccessfulInit(), "Stock object has an empty symbol or price!")
     }
     
     func testPerformanceExample() {

@@ -35,7 +35,7 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
             
             //Print Data from response
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8){
-                // print("Data: \(utf8Text)")
+                 print("Data: \(utf8Text)")
                 
                 //Grab the JSON out of the data we retrieved
                 json = JSON(data: data)
@@ -49,24 +49,29 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
                     
                     for element in arrayOfQuotes!{
                         
-                        //Initialize a stock object, and then place it into an array of stock objects to populate our table view with
-                        
+                        //Initialize a stock object, and then place it into an array of stock objects to populate our table view with. Symbol and last trade price are the most important.
                         let symbol = element["symbol"].stringValue
                         let lastTradePriceOnly = element["LastTradePriceOnly"].stringValue
                         let change = element["Change"].stringValue
+                        let yearLow = element["YearLow"].stringValue
+                        let yearHigh = element["YearHigh"].stringValue
                         
-                        //If either is empty, we don't want to add it to our array.
-                        if(symbol.isEmpty || lastTradePriceOnly.isEmpty){
-                            continue
-                        }
-                        
-                        //I have a unit test set up to make sure that this only initializes if the strings being passed aren't empty, but the code above this comment would prevent that from being the case anyway.
+                        //Initialize a stock object
                         let stockObject = StockObject(symbol: symbol, lastTradePriceOnly: lastTradePriceOnly)
                         stockObject.change = change
+                        stockObject.yearLow = yearLow
+                        stockObject.yearHigh = yearHigh
 
-                        self.stockSymbolsArray.append(stockObject)
+                        //Make a bool using the return from a function I wrote within stock object to test whether the init meets my requirements. It has to have a symbol and a lastTradePrice. Yahoo in particular sometimes doesn't have a symbol, so I realized I needed this test case.
+                        let shouldAppendToArray = stockObject.verifySuccessfulInit()
+                        
+                        //There was a symbol and a lastTradePrice, go ahead and append it to the array
+                        if(shouldAppendToArray){
+                            self.stockSymbolsArray.append(stockObject)
+                        }
                     }
                     
+                    //Reload the tableView with new data after the call finishes
                     self.tableView.reloadData()
                 }
             }
@@ -120,10 +125,14 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
                 let stringForSymbol = "Symbol: " + stockSymbolsArray[indexPathToPassForSegue].symbol
                 let lastTradePrice  = "Price: " + stockSymbolsArray[indexPathToPassForSegue].lastTradePriceOnly
                 let change = "Change: " + stockSymbolsArray[indexPathToPassForSegue].change
+                let yearLow = "Year Low: " + stockSymbolsArray[indexPathToPassForSegue].yearLow
+                let yearHigh = "Year High: " + stockSymbolsArray[indexPathToPassForSegue].yearHigh
                 
                 viewController.arrayOfStringDataToShow.append(stringForSymbol)
                 viewController.arrayOfStringDataToShow.append(lastTradePrice)
                 viewController.arrayOfStringDataToShow.append(change)
+                viewController.arrayOfStringDataToShow.append(yearLow)
+                viewController.arrayOfStringDataToShow.append(yearHigh)
             }
         }
     }

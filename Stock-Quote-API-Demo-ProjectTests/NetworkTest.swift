@@ -33,7 +33,7 @@ class NetworkTest: XCTestCase {
         let expectation = XCTestExpectation(description: "Download stock info")
         
         // Create a URL for a web page to be downloaded.
-        let url = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%20in%20(%22YHOO%22%2C%22AAPL%22%2C%22GOOG%22%2C%22MSFT%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=")!
+        let url = URL(string: Globals.kStockInfoURL)!
         
         // Create a background task to download the web page.
         let dataTask = URLSession.shared.dataTask(with: url) { (data, _, _) in
@@ -43,7 +43,6 @@ class NetworkTest: XCTestCase {
             
             // Fulfill the expectation to indicate that the background task has finished successfully.
             expectation.fulfill()
-            
         }
         
         // Start the download task.
