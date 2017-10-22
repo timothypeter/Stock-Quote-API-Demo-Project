@@ -8,6 +8,7 @@
 
 import Foundation
 
+//A class to represent stock information for a company
 class StockObject: NSObject{
     var name: String = ""
     var symbol: String = ""
@@ -16,6 +17,7 @@ class StockObject: NSObject{
     var yearLow:String = ""
     var yearHigh:String = ""
     
+    //The stock object is only being used in one view controller, and there these two parameters are the most important
     init(symbol: String, lastTradePriceOnly: String){
         self.symbol = symbol
         self.lastTradePriceOnly = lastTradePriceOnly

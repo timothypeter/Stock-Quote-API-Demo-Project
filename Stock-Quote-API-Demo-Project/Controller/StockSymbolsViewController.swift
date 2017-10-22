@@ -106,6 +106,16 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
         if(self.stockSymbolsArray.count > 0){
             cell.symbolLabel.text = self.stockSymbolsArray[indexPath.row].symbol
             cell.lastTradePriceOnlyLabel.text = self.stockSymbolsArray[indexPath.row].lastTradePriceOnly
+            
+            if(cell.doLabelsHaveText()){
+                return cell
+            }
+            
+            else{
+                cell.symbolLabel.text = "N/A"
+                cell.lastTradePriceOnlyLabel.text = "N/A"
+                return cell
+            }
         }
         
         return cell
@@ -117,7 +127,6 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     //MARK: Segue
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "SHOWDETAILSVIEWCONTROLLER"){
             if let viewController = segue.destination as? DetailsViewController {
