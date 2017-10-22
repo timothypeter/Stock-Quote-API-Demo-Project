@@ -28,17 +28,34 @@ class Stock_Quote_API_Demo_ProjectUITests: XCTestCase {
         super.tearDown()
     }
     
-    //My first functional UI test, even if basic.
+    func testSwipingOnStockSymbolsViewController(){
+        let aapl15625Table = XCUIApplication()/*@START_MENU_TOKEN@*/.tables.containing(.cell, identifier:"AAPL, 156.25").element/*[[".tables.containing(.cell, identifier:\"MSFT, 78.81\").element",".tables.containing(.cell, identifier:\"GOOG, 988.20\").element",".tables.containing(.cell, identifier:\"AAPL, 156.25\").element"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        aapl15625Table.swipeUp()
+        aapl15625Table.swipeUp()
+        aapl15625Table/*@START_MENU_TOKEN@*/.swipeRight()/*[[".swipeUp()",".swipeRight()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        aapl15625Table.swipeUp()
+        aapl15625Table.swipeUp()
+        aapl15625Table.swipeUp()
+        aapl15625Table.swipeLeft()
+        aapl15625Table.swipeRight()
+        aapl15625Table.swipeDown()
+        aapl15625Table.swipeUp()
+    }
+    
+    func testReachingDetailControllerAndBackingOut() {
+        let app = XCUIApplication()
+        app.tables.cells["AAPL, 156.25"].tap()
+        app.navigationBars["Details"].buttons["Stock Symbols"].tap()
+    }
+    
+    
     func testExample() {
-        // Use recording to get started writing UI tests.
-        
         let tablesQuery = XCUIApplication().tables
         let msft7881Cell = tablesQuery.cells["MSFT, 78.81"]
         msft7881Cell.swipeUp()
         tablesQuery.cells["AAPL, 156.25"].swipeDown()
         tablesQuery.cells["GOOG, 988.20"].tap()
         msft7881Cell.tap()
-                                                // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
 }

@@ -19,7 +19,6 @@ class StockObjectTest: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
         stockObject = StockObject(symbol: testSymbol, lastTradePriceOnly: tradePrice)
     }
     
