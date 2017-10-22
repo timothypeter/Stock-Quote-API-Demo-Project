@@ -15,14 +15,15 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet var tableView: UITableView!
     var stockSymbolsArray: [StockObject] = []
+    var indexPathToPassForSegue: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //stockSymbolsArray = [Any]()
         
-        //Makes us only look for open issues/pull requests
-        let dict = ["state" : "open"]
+        //Sending no params
+        let dict = ["" : ""]
         
         var json = JSON.null
         
@@ -52,6 +53,7 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
                         
                         let symbol = element["symbol"].stringValue
                         let lastTradePriceOnly = element["LastTradePriceOnly"].stringValue
+                        let change = element["Change"].stringValue
                         
                         //If either is empty, we don't want to add it to our array.
                         if(symbol.isEmpty || lastTradePriceOnly.isEmpty){
@@ -60,6 +62,7 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
                         
                         //I have a unit test set up to make sure that this only initializes if the strings being passed aren't empty, but the code above this comment would prevent that from being the case anyway.
                         let stockObject = StockObject(symbol: symbol, lastTradePriceOnly: lastTradePriceOnly)
+                        stockObject.change = change
 
                         self.stockSymbolsArray.append(stockObject)
                     }
@@ -105,13 +108,23 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "SHOWDETAILSVIEWCONTROLLER", sender: self)
+        indexPathToPassForSegue = indexPath.row
     }
     
     //MARK: Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "SHOWDETAILSVIEWCONTROLLER"){
-            
+            if let viewController = segue.destination as? DetailsViewController {
+                
+                let stringForSymbol = "Symbol: " + stockSymbolsArray[indexPathToPassForSegue].symbol
+                let lastTradePrice  = "Price: " + stockSymbolsArray[indexPathToPassForSegue].lastTradePriceOnly
+                let change = "Change: " + stockSymbolsArray[indexPathToPassForSegue].change
+                
+                viewController.arrayOfStringDataToShow.append(stringForSymbol)
+                viewController.arrayOfStringDataToShow.append(lastTradePrice)
+                viewController.arrayOfStringDataToShow.append(change)
+            }
         }
     }
 }

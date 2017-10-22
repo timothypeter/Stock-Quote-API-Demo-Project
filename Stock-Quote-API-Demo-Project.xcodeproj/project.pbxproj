@@ -12,6 +12,7 @@
 		227D87031F9BE58B00AF2B39 /* StockObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D87021F9BE58A00AF2B39 /* StockObjectTest.swift */; };
 		227D87041F9BE5C700AF2B39 /* StockObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225770821F9AC7A00030F5FE /* StockObject.swift */; };
 		2296F3661F99B38D00DC66E4 /* StockSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F3651F99B38D00DC66E4 /* StockSymbolsViewController.swift */; };
+		22A867511F9C392F00334526 /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A867501F9C392F00334526 /* NetworkTest.swift */; };
 		22B526591F99B4BD0098F348 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B526581F99B4BD0098F348 /* DetailsViewController.swift */; };
 		22B5265C1F9A6D900098F348 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5265B1F9A6D900098F348 /* Router.swift */; };
 		22FAA3731F998D9800346117 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAA3721F998D9800346117 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		227D87001F9BA6FC00AF2B39 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
 		227D87021F9BE58A00AF2B39 /* StockObjectTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockObjectTest.swift; sourceTree = "<group>"; };
 		2296F3651F99B38D00DC66E4 /* StockSymbolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSymbolsViewController.swift; sourceTree = "<group>"; };
+		22A867501F9C392F00334526 /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
 		22B526581F99B4BD0098F348 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		22B5265B1F9A6D900098F348 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		22FAA36F1F998D9700346117 /* Stock-Quote-API-Demo-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stock-Quote-API-Demo-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +176,7 @@
 		22FAA3861F998D9800346117 /* Stock-Quote-API-Demo-ProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				22A867501F9C392F00334526 /* NetworkTest.swift */,
 				227D87021F9BE58A00AF2B39 /* StockObjectTest.swift */,
 				22FAA3871F998D9800346117 /* Stock_Quote_API_Demo_ProjectTests.swift */,
 				22FAA3891F998D9800346117 /* Info.plist */,
@@ -528,6 +531,7 @@
 			files = (
 				22FAA3881F998D9800346117 /* Stock_Quote_API_Demo_ProjectTests.swift in Sources */,
 				227D87031F9BE58B00AF2B39 /* StockObjectTest.swift in Sources */,
+				22A867511F9C392F00334526 /* NetworkTest.swift in Sources */,
 				227D87041F9BE5C700AF2B39 /* StockObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

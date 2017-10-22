@@ -86,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7w-7v-wCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1856.8" y="129.98500749625188"/>
+            <point key="canvasLocation" x="1884" y="130"/>
         </scene>
         <!--Details-->
         <scene sceneID="lQ2-Wn-oOF">
@@ -95,13 +95,32 @@
                     <view key="view" contentMode="scaleToFill" id="7dR-oA-GdI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DMc-h0-q8V">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="j2x-1z-NV4" id="Qq6-0c-D89"/>
+                                    <outlet property="delegate" destination="j2x-1z-NV4" id="wr6-AO-ua1"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DMc-h0-q8V" firstAttribute="top" secondItem="TI0-rA-aIX" secondAttribute="top" id="80J-gv-fc9"/>
+                            <constraint firstItem="DMc-h0-q8V" firstAttribute="bottom" secondItem="TI0-rA-aIX" secondAttribute="bottom" id="b6E-2o-VwH"/>
+                            <constraint firstAttribute="trailing" secondItem="DMc-h0-q8V" secondAttribute="trailing" id="kMv-nz-VkG"/>
+                            <constraint firstItem="DMc-h0-q8V" firstAttribute="leading" secondItem="7dR-oA-GdI" secondAttribute="leading" id="mWy-yE-Qjx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="TI0-rA-aIX"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="DMc-h0-q8V" id="GkN-pn-Ydq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JtV-P5-Ivg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2684" y="130"/>
+            <point key="canvasLocation" x="2684" y="129.98500749625188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="49o-pm-tS7">
