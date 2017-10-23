@@ -21,7 +21,7 @@
                                 <rect key="frame" x="88" y="143" width="198" height="380"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading...Please wait" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehB-os-h1q">
-                                <rect key="frame" x="88" y="531" width="198" height="58"/>
+                                <rect key="frame" x="16" y="531" width="343" height="58"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -33,9 +33,9 @@
                             <constraint firstItem="ehB-os-h1q" firstAttribute="top" secondItem="CJs-UN-vww" secondAttribute="bottom" constant="8" symbolic="YES" id="KJA-Bx-FlP"/>
                             <constraint firstItem="CJs-UN-vww" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="MmQ-wX-xCK"/>
                             <constraint firstItem="CJs-UN-vww" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="PNC-N9-wpU"/>
-                            <constraint firstItem="ehB-os-h1q" firstAttribute="leading" secondItem="CJs-UN-vww" secondAttribute="leading" id="bqC-qW-Em6"/>
+                            <constraint firstItem="ehB-os-h1q" firstAttribute="leading" secondItem="CJs-UN-vww" secondAttribute="leading" constant="-72" id="bqC-qW-Em6"/>
                             <constraint firstItem="CJs-UN-vww" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="88" id="dkc-V0-GLk"/>
-                            <constraint firstItem="ehB-os-h1q" firstAttribute="trailing" secondItem="CJs-UN-vww" secondAttribute="trailing" id="flt-2K-bLW"/>
+                            <constraint firstItem="ehB-os-h1q" firstAttribute="trailing" secondItem="CJs-UN-vww" secondAttribute="trailing" constant="73" id="flt-2K-bLW"/>
                             <constraint firstItem="CJs-UN-vww" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="123" id="zpK-cG-hGu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

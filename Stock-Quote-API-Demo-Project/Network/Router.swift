@@ -1,6 +1,7 @@
 //Based off of Router in official Alamofire on Github
 /*https://github.com/Alamofire/Alamofire*/
 
+//This approach is pretty common for many iOS developers. I just used the Router file on Alamofire's github, and then modified it very slightly to my own needs.
 import Foundation
 import Alamofire
 

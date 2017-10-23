@@ -13,6 +13,7 @@ class StockTableViewCell: UITableViewCell{
     @IBOutlet var symbolLabel: UILabel!
     @IBOutlet var lastTradePriceOnlyLabel: UILabel!
     
+    //Check if both labels have text in them
     func doLabelsHaveText() -> Bool{
         if((symbolLabel.text?.isEmpty)! || (lastTradePriceOnlyLabel.text?.isEmpty)!){
             return false

@@ -23,6 +23,7 @@ class StockObject: NSObject{
         self.lastTradePriceOnly = lastTradePriceOnly
     }
     
+    //Test to see if symbol and lastTradePriceOnly's labels are empty. If they aren't empty, we return true
     public func verifySuccessfulInit() -> Bool{
         if(!self.symbol.isEmpty && !self.lastTradePriceOnly.isEmpty){
             return true

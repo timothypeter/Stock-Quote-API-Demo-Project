@@ -37,61 +37,61 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8){
                  print("Data: \(utf8Text)")
                 
-                let responseCode = response.response?.statusCode
-                
-                //The same call, with the same data sometimes randomly fails. This was a little last minute, because I wasn't having any problems with the calls until tonight (Sunday, 10/23). However, a restart of the app/running the call again usually does the trick. The problem is server side.
-                if(responseCode != 200){
-                    print("Call to server failed.")
-                    
-                    let alertController = UIAlertController(title: "Error", message: "Call to retrieve data failed. Please restart the app.", preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                    return
-                }
-                
-                //Grab the JSON out of the data we retrieved
-                json = JSON(data: data)
-                
-                print(json)
-                
-                //Get everything in the json under "query"
-                let dictFromJSON = json["query"].dictionaryValue
-                
-                //Have to now specify that we want the "results"
-                if let resultsDict = dictFromJSON["results"]?.dictionaryValue{
-                    
-                    //now we can actually get the array of quotes. With SwiftyJSON you have to break it down into a few steps.
-                    let arrayOfQuotes = resultsDict["quote"]?.arrayValue
-                    
-                    //Iterate through our of array quotes. Create stock objects to place into an array, and then update the tableView when we are done
-                    for element in arrayOfQuotes!{
-                        //Initialize a stock object, and then place it into an array of stock objects to populate our table view with. Symbol and last trade price are the most important.
-                        let symbol = element["symbol"].stringValue
-                        let lastTradePriceOnly = element["LastTradePriceOnly"].stringValue
-                        let change = element["Change"].stringValue
-                        let yearLow = element["YearLow"].stringValue
-                        let yearHigh = element["YearHigh"].stringValue
+                if let responseCode = response.response?.statusCode{
+                    //The same call, with the same data sometimes randomly fails. This was a little last minute, because I wasn't having any problems with the calls until tonight (Sunday, 10/23). However, a restart of the app/running the call again usually does the trick. The problem is server side.
+                    if(responseCode != 200){
+                        print("Call to server failed.")
                         
-                        //Initialize a stock object
-                        let stockObject = StockObject(symbol: symbol, lastTradePriceOnly: lastTradePriceOnly)
-                        stockObject.change = change
-                        stockObject.yearLow = yearLow
-                        stockObject.yearHigh = yearHigh
-
-                        //Make a bool using the return from a function I wrote within stock object to test whether the init meets my requirements. It has to have a symbol and a lastTradePrice. Yahoo in particular sometimes doesn't have a symbol, so I realized I needed this test case.
-                        let shouldAppendToArray = stockObject.verifySuccessfulInit()
+                        let alertController = UIAlertController(title: "Error", message: "Call to retrieve data failed. Please restart the app.", preferredStyle: .alert)
                         
-                        //There was a symbol and a lastTradePrice, go ahead and append it to the array
-                        if(shouldAppendToArray){
-                            self.stockSymbolsArray.append(stockObject)
-                        }
+                        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alertController.addAction(defaultAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                        return
                     }
                     
-                    //Reload the tableView with new data after the call finishes
-                    self.tableView.reloadData()
+                    //Grab the JSON out of the data we retrieved
+                    json = JSON(data: data)
+                    
+                    print(json)
+                    
+                    //Get everything in the json under "query"
+                    let dictFromJSON = json["query"].dictionaryValue
+                    
+                    //Have to now specify that we want the "results"
+                    if let resultsDict = dictFromJSON["results"]?.dictionaryValue{
+                        
+                        //now we can actually get the array of quotes. With SwiftyJSON you have to break it down into a few steps.
+                        let arrayOfQuotes = resultsDict["quote"]?.arrayValue
+                        
+                        //Iterate through our of array quotes. Create stock objects to place into an array, and then update the tableView when we are done
+                        for element in arrayOfQuotes!{
+                            //Initialize a stock object, and then place it into an array of stock objects to populate our table view with. Symbol and last trade price are the most important.
+                            let symbol = element["symbol"].stringValue
+                            let lastTradePriceOnly = element["LastTradePriceOnly"].stringValue
+                            let change = element["Change"].stringValue
+                            let yearLow = element["YearLow"].stringValue
+                            let yearHigh = element["YearHigh"].stringValue
+                            
+                            //Initialize a stock object
+                            let stockObject = StockObject(symbol: symbol, lastTradePriceOnly: lastTradePriceOnly)
+                            stockObject.change = change
+                            stockObject.yearLow = yearLow
+                            stockObject.yearHigh = yearHigh
+                            
+                            //Make a bool using the return from a function I wrote within stock object to test whether the init meets my requirements. It has to have a symbol and a lastTradePrice. Yahoo in particular sometimes doesn't have a symbol, so I realized I needed this test case.
+                            let shouldAppendToArray = stockObject.verifySuccessfulInit()
+                            
+                            //There was a symbol and a lastTradePrice, go ahead and append it to the array
+                            if(shouldAppendToArray){
+                                self.stockSymbolsArray.append(stockObject)
+                            }
+                        }
+                        
+                        //Reload the tableView with new data after the call finishes
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }
@@ -123,10 +123,12 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "StockTableViewCell", for: indexPath) as! StockTableViewCell
         
+        //Check if the array of symbols has a count greater than zero to avoid crashes, and then access it to set the text of the two labels in each cell
         if(self.stockSymbolsArray.count > 0){
             cell.symbolLabel.text = self.stockSymbolsArray[indexPath.row].symbol
             cell.lastTradePriceOnlyLabel.text = self.stockSymbolsArray[indexPath.row].lastTradePriceOnly
             
+            //Run the test inside of the cell's class implementation to see whether it has the information it needs
             if(cell.doLabelsHaveText()){
                 return cell
             }
@@ -143,8 +145,8 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
     
     //Tapping on any cell should send the user to the DetailsViewController
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "SHOWDETAILSVIEWCONTROLLER", sender: self)
         indexPathToPassForSegue = indexPath.row
+        self.performSegue(withIdentifier: "SHOWDETAILSVIEWCONTROLLER", sender: self)
     }
     
     //MARK: Segue
