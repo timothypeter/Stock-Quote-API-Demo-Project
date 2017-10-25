@@ -8,27 +8,26 @@
 
 import Foundation
 
-//A class to represent stock information for a company
-class StockObject: NSObject{
-    var name: String = ""
-    var symbol: String = ""
-    var lastTradePriceOnly: String = ""
-    var change:String = ""
-    var yearLow:String = ""
-    var yearHigh:String = ""
+//A struct to represent stock information for a company
+struct StockObject {
+    var symbol: String
+    var lastTradePriceOnly: String
+    var change:String
+    var yearLow:String
+    var yearHigh:String
     
-    //The stock object is only being used in one view controller, and there these two parameters are the most important
-    init(symbol: String, lastTradePriceOnly: String){
+
+    init?(name: String, symbol: String, lastTradePriceOnly: String, change: String, yearLow: String, yearHigh: String){
+       
+        guard(!symbol.isEmpty), (!lastTradePriceOnly.isEmpty), (!change.isEmpty), (!yearLow.isEmpty), (!yearHigh.isEmpty) else{
+            print("Failed")
+            return nil
+        }
+
         self.symbol = symbol
         self.lastTradePriceOnly = lastTradePriceOnly
-    }
-    
-    //Test to see if symbol and lastTradePriceOnly's labels are empty. If they aren't empty, we return true
-    public func verifySuccessfulInit() -> Bool{
-        if(!self.symbol.isEmpty && !self.lastTradePriceOnly.isEmpty){
-            return true
-        }
-        
-        return false
+        self.change = change
+        self.yearLow = yearLow
+        self.yearHigh = yearHigh
     }
 }

@@ -44,14 +44,16 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(arrayOfStringDataToShow.count > 0){
             if(arrayOfStringDataToShow[indexPath.row].contains("+")){
                 //We want to split the string into two, and then make the color green since it's a positive change
-                let attributedStringToPass = changeSecondHalfToGreen(stringToSplitAndColor: arrayOfStringDataToShow[indexPath.row])
+                let attributedStringToPass =  arrayOfStringDataToShow[indexPath.row].changeToGreenAfterColon()
                 cell.textLabel?.attributedText = attributedStringToPass
             }
             
             if(arrayOfStringDataToShow[indexPath.row].contains("-")){
                 //We want to split the string into two, and then make the color red since it's a negative change
-                let attributedStringToPass = changeSecondHalfToRed(stringToSplitAndColor: arrayOfStringDataToShow[indexPath.row])
-                cell.textLabel?.attributedText = attributedStringToPass
+                let attrString = arrayOfStringDataToShow[indexPath.row].changeToRedAfterColon()
+                
+                //let attributedStringToPass = changeSecondHalfToRed(stringToSplitAndColor: arrayOfStringDataToShow[indexPath.row])
+                cell.textLabel?.attributedText = attrString
             }
             
             cell.textLabel?.text = arrayOfStringDataToShow[indexPath.row]

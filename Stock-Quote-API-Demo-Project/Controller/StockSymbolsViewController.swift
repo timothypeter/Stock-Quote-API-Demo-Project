@@ -27,6 +27,35 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
         
         var json = JSON.null
         
+        // Create a URL for a web page to be downloaded.
+        let url = URL(string: Globals.kStockInfoURL)!
+        
+        // Create a background task to download the web page.
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, _) in
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                if let query = json["query"] as? [String: Any]{
+                    if let results = query["results"] as? [String: Any]{
+                        if let quotes = results["quote"] as? [[String: Any]]{
+                            for quote in quotes{
+                                
+                            }
+                        }
+
+                    }
+                }
+                
+            } catch let error as NSError {
+                print(error)
+            }
+            
+            // Make sure we downloaded some data.
+        }
+        
+        // Start the download task.
+        dataTask.resume()
+        
         //Call to retrieve Stock Quotes for various companies
         Alamofire.request(Router.getStockInfo(parameters: dict)).response {response in
             print("Request: \(String(describing: response.request))")
@@ -68,6 +97,7 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
                         //Iterate through our of array quotes. Create stock objects to place into an array, and then update the tableView when we are done
                         for element in arrayOfQuotes!{
                             //Initialize a stock object, and then place it into an array of stock objects to populate our table view with. Symbol and last trade price are the most important.
+                            let name = element["name"].stringValue
                             let symbol = element["symbol"].stringValue
                             let lastTradePriceOnly = element["LastTradePriceOnly"].stringValue
                             let change = element["Change"].stringValue
@@ -75,17 +105,8 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
                             let yearHigh = element["YearHigh"].stringValue
                             
                             //Initialize a stock object
-                            let stockObject = StockObject(symbol: symbol, lastTradePriceOnly: lastTradePriceOnly)
-                            stockObject.change = change
-                            stockObject.yearLow = yearLow
-                            stockObject.yearHigh = yearHigh
-                            
-                            //Make a bool using the return from a function I wrote within stock object to test whether the init meets my requirements. It has to have a symbol and a lastTradePrice. Yahoo in particular sometimes doesn't have a symbol, so I realized I needed this test case.
-                            let shouldAppendToArray = stockObject.verifySuccessfulInit()
-                            
-                            //There was a symbol and a lastTradePrice, go ahead and append it to the array
-                            if(shouldAppendToArray){
-                                self.stockSymbolsArray.append(stockObject)
+                            if let stockObject = StockObject.init(name: name, symbol: symbol, lastTradePriceOnly: lastTradePriceOnly, change: change, yearLow: yearLow, yearHigh: yearHigh){
+                                 self.stockSymbolsArray.append(stockObject)
                             }
                         }
                         
