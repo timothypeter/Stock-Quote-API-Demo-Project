@@ -18,7 +18,6 @@ class DataManager{
     
     init() {
         print("Singleton initialized")
-        getStockQuotes()
     }
     
     var quotesForStocks = [[String:Any]]()

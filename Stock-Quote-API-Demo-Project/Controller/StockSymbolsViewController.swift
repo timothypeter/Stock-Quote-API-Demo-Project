@@ -38,6 +38,7 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
         
         var json = JSON.null
         
+        /*
         //Call to retrieve Stock Quotes for various companies
         Alamofire.request(Router.getStockInfo(parameters: dict)).response {response in
             print("Request: \(String(describing: response.request))")
@@ -97,6 +98,7 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
                 }
             }
         }
+ */
     }
     
     override func viewWillAppear(_ animated: Bool) {
