@@ -9,8 +9,6 @@
 import XCTest
 
 @testable import Stock_Quote_API_Demo_Project
-@testable import SwiftyJSON
-@testable import Alamofire
 
 class Stock_Quote_API_Demo_ProjectTests: XCTestCase {
     

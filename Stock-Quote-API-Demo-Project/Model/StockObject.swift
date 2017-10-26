@@ -20,7 +20,6 @@ struct StockObject {
     init?(symbol: String, lastTradePriceOnly: String, change: String, yearLow: String, yearHigh: String){
        
         guard(!symbol.isEmpty), (!lastTradePriceOnly.isEmpty), (!change.isEmpty), (!yearLow.isEmpty), (!yearHigh.isEmpty) else{
-            print("Failed")
             return nil
         }
 

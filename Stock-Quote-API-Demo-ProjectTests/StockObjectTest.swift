@@ -13,12 +13,12 @@ import XCTest
 class StockObjectTest: XCTestCase {
     
     func testStockObjectInitialization() {
-        let newStockObj = StockObject.init(name: "YHOO", symbol: "YHOO", lastTradePriceOnly: "320.00", change: "+53.2", yearLow: "32.0", yearHigh: "500.00")
+        let newStockObj = StockObject.init(symbol: "YHOO", lastTradePriceOnly: "320.00", change: "+53.2", yearLow: "32.0", yearHigh: "500.00")
         XCTAssertNotNil(newStockObj)
     }
     
     func testStockObjectInitializationFails(){
-        let newStockObj = StockObject.init(name: "YHOO", symbol: "", lastTradePriceOnly: "", change: "", yearLow: "", yearHigh: "")
+        let newStockObj = StockObject.init(symbol: "", lastTradePriceOnly: "", change: "", yearLow: "", yearHigh: "")
         XCTAssertNil(newStockObj)
     }
     

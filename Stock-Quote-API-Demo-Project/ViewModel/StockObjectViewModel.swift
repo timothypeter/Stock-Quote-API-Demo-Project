@@ -30,20 +30,16 @@ class StockObjectViewModel{
     func retrieveData(){
         for element in DataManager.sharedInstance.quotesForStocks
         {
-            var symbolString: String
-            symbolString = element["symbol"] as? String ?? ""
+           // var symbolString: String
+            let symbolString = element["symbol"] as? String ?? ""
         
-            var tradePrice: String
-            tradePrice = element["LastTradePriceOnly"] as? String ?? ""
+            let tradePrice = element["LastTradePriceOnly"] as? String ?? ""
+        
+            let change = element["Change"] as? String ?? ""
             
-            var change:String
-            change = element["Change"] as? String ?? ""
+            let yearLow = element["YearLow"] as? String ?? ""
             
-            var yearLow:String
-            yearLow = element["YearLow"] as? String ?? ""
-            
-            var yearHigh:String
-            yearHigh = element["YearHigh"] as? String ?? ""
+            let yearHigh = element["YearHigh"] as? String ?? ""
             
             if(!symbolString.isEmpty && !tradePrice.isEmpty && !change.isEmpty && !yearLow.isEmpty && !yearHigh.isEmpty){
                 if let stockObject = StockObject(symbol: symbolString, lastTradePriceOnly: tradePrice, change: change, yearLow: yearLow, yearHigh: yearHigh){

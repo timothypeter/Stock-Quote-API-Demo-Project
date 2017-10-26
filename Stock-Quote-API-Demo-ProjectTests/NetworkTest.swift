@@ -9,8 +9,6 @@
 import XCTest
 
 @testable import Stock_Quote_API_Demo_Project
-@testable import Alamofire
-@testable import SwiftyJSON
 
 class NetworkTest: XCTestCase {
     
