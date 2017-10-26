@@ -8,8 +8,6 @@
 
 import Foundation
 import UIKit
-import SwiftyJSON
-import Alamofire
 
 class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
@@ -30,75 +28,6 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         
         self.stockObjectViewModel = StockObjectViewModel(reloadTableViewCallback: reloadTableViewData)
-        
-        //stockSymbolsArray = [Any]()
-        
-        //Sending no params
-        let dict = ["" : ""]
-        
-        var json = JSON.null
-        
-        /*
-        //Call to retrieve Stock Quotes for various companies
-        Alamofire.request(Router.getStockInfo(parameters: dict)).response {response in
-            print("Request: \(String(describing: response.request))")
-            print("Response: \(String(describing: response.response))")
-            print("Error: \(String(describing: response.error))")
-            
-            //Print Data from response
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8){
-                 print("Data: \(utf8Text)")
-                
-                if let responseCode = response.response?.statusCode{
-                    //The same call, with the same data sometimes randomly fails. This was a little last minute, because I wasn't having any problems with the calls until tonight (Sunday, 10/23). However, a restart of the app/running the call again usually does the trick. The problem is server side.
-                    if(responseCode != 200){
-                        print("Call to server failed.")
-                        
-                        let alertController = UIAlertController(title: "Error", message: "Call to retrieve data failed. Please restart the app.", preferredStyle: .alert)
-                        
-                        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        alertController.addAction(defaultAction)
-                        
-                        self.present(alertController, animated: true, completion: nil)
-                        return
-                    }
-                    
-                    //Grab the JSON out of the data we retrieved
-                    json = JSON(data: data)
-                    
-                    print(json)
-                    
-                    //Get everything in the json under "query"
-                    let dictFromJSON = json["query"].dictionaryValue
-                    
-                    //Have to now specify that we want the "results"
-                    if let resultsDict = dictFromJSON["results"]?.dictionaryValue{
-                        
-                        //now we can actually get the array of quotes. With SwiftyJSON you have to break it down into a few steps.
-                        let arrayOfQuotes = resultsDict["quote"]?.arrayValue
-                        
-                        //Iterate through our of array quotes. Create stock objects to place into an array, and then update the tableView when we are done
-                        for element in arrayOfQuotes!{
-                            //Initialize a stock object, and then place it into an array of stock objects to populate our table view with. Symbol and last trade price are the most important.
-                            let symbol = element["symbol"].stringValue
-                            let lastTradePriceOnly = element["LastTradePriceOnly"].stringValue
-                            let change = element["Change"].stringValue
-                            let yearLow = element["YearLow"].stringValue
-                            let yearHigh = element["YearHigh"].stringValue
-                            
-                            //Initialize a stock object
-                            if let stockObject = StockObject.init(symbol: symbol, lastTradePriceOnly: lastTradePriceOnly, change: change, yearLow: yearLow, yearHigh: yearHigh){
-                                 self.stockSymbolsArray.append(stockObject)
-                            }
-                        }
-                        
-                        //Reload the tableView with new data after the call finishes
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-        }
- */
     }
     
     override func viewWillAppear(_ animated: Bool) {

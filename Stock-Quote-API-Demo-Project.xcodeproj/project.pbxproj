@@ -20,7 +20,6 @@
 		22A867541F9C7F3E00334526 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A867531F9C7F3E00334526 /* Globals.swift */; };
 		22A867551F9C829300334526 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A867531F9C7F3E00334526 /* Globals.swift */; };
 		22B526591F99B4BD0098F348 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B526581F99B4BD0098F348 /* DetailsViewController.swift */; };
-		22B5265C1F9A6D900098F348 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5265B1F9A6D900098F348 /* Router.swift */; };
 		22FAA3731F998D9800346117 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAA3721F998D9800346117 /* AppDelegate.swift */; };
 		22FAA3781F998D9800346117 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FAA3761F998D9800346117 /* Main.storyboard */; };
 		22FAA37A1F998D9800346117 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22FAA3791F998D9800346117 /* Assets.xcassets */; };
@@ -62,7 +61,6 @@
 		22A867501F9C392F00334526 /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
 		22A867531F9C7F3E00334526 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		22B526581F99B4BD0098F348 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		22B5265B1F9A6D900098F348 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		22FAA36F1F998D9700346117 /* Stock-Quote-API-Demo-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stock-Quote-API-Demo-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22FAA3721F998D9800346117 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22FAA3771F998D9800346117 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 		22B5265A1F9A6D7A0098F348 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				22B5265B1F9A6D900098F348 /* Router.swift */,
 				2260C5C91FA11988002551E2 /* DataManager.swift */,
 			);
 			path = Network;
@@ -550,7 +547,6 @@
 			files = (
 				227D87011F9BA6FC00AF2B39 /* StockTableViewCell.swift in Sources */,
 				2260C5CA1FA11988002551E2 /* DataManager.swift in Sources */,
-				22B5265C1F9A6D900098F348 /* Router.swift in Sources */,
 				2296F3661F99B38D00DC66E4 /* StockSymbolsViewController.swift in Sources */,
 				2260C5C51FA0786A002551E2 /* Extensions.swift in Sources */,
 				22FAA3731F998D9800346117 /* AppDelegate.swift in Sources */,

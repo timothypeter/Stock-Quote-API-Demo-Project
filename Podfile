@@ -7,14 +7,9 @@ target 'Stock-Quote-API-Demo-Project' do
 
   # Pods for Stock-Quote-API-Demo-Project
 
-  pod 'Alamofire', '~> 4.5'
-  pod 'SwiftyJSON'
-
   target 'Stock-Quote-API-Demo-ProjectTests' do
     inherit! :search_paths
     # Pods for testing
-  pod 'Alamofire', '~> 4.5'
-  pod 'SwiftyJSON'
   end
 
   target 'Stock-Quote-API-Demo-ProjectUITests' do
