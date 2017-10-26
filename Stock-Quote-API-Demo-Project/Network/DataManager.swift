@@ -9,11 +9,17 @@
 import Foundation
 
 class DataManager{
+    
     static let sharedInstance: DataManager = {
         var manager = DataManager()
         
         return manager
     }()
+    
+    init() {
+        print("Singleton initialized")
+        getStockQuotes()
+    }
     
     var quotesForStocks = [[String:Any]]()
     
@@ -30,6 +36,7 @@ class DataManager{
                     if let results = query["results"] as? [String: Any]{
                         if let quotes = results["quote"] as? [[String: Any]]{
                             self.quotesForStocks = quotes
+                            NotificationCenter.default.post(name: Notification.Name(Globals.kQuotesObtainedNotification), object: nil)
                         }
                         
                     }

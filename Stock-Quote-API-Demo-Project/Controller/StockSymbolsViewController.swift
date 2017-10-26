@@ -16,9 +16,20 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var tableView: UITableView!
     var stockSymbolsArray: [StockObject] = []
     var indexPathToPassForSegue: Int = 0
+    var stockObjectViewModel: StockObjectViewModel!
+  
+    //method is called by the viewModel when it has new data
+    func reloadTableViewData(){
+        DispatchQueue.main.async{
+            self.stockSymbolsArray = self.stockObjectViewModel.stockArray
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.stockObjectViewModel = StockObjectViewModel(reloadTableViewCallback: reloadTableViewData)
         
         //stockSymbolsArray = [Any]()
         
@@ -26,35 +37,6 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
         let dict = ["" : ""]
         
         var json = JSON.null
-        
-        // Create a URL for a web page to be downloaded.
-        let url = URL(string: Globals.kStockInfoURL)!
-        
-        // Create a background task to download the web page.
-        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, _) in
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
-                if let query = json["query"] as? [String: Any]{
-                    if let results = query["results"] as? [String: Any]{
-                        if let quotes = results["quote"] as? [[String: Any]]{
-                            for quote in quotes{
-                                
-                            }
-                        }
-
-                    }
-                }
-                
-            } catch let error as NSError {
-                print(error)
-            }
-            
-            // Make sure we downloaded some data.
-        }
-        
-        // Start the download task.
-        dataTask.resume()
         
         //Call to retrieve Stock Quotes for various companies
         Alamofire.request(Router.getStockInfo(parameters: dict)).response {response in
@@ -97,7 +79,6 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
                         //Iterate through our of array quotes. Create stock objects to place into an array, and then update the tableView when we are done
                         for element in arrayOfQuotes!{
                             //Initialize a stock object, and then place it into an array of stock objects to populate our table view with. Symbol and last trade price are the most important.
-                            let name = element["name"].stringValue
                             let symbol = element["symbol"].stringValue
                             let lastTradePriceOnly = element["LastTradePriceOnly"].stringValue
                             let change = element["Change"].stringValue
@@ -105,7 +86,7 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
                             let yearHigh = element["YearHigh"].stringValue
                             
                             //Initialize a stock object
-                            if let stockObject = StockObject.init(name: name, symbol: symbol, lastTradePriceOnly: lastTradePriceOnly, change: change, yearLow: yearLow, yearHigh: yearHigh){
+                            if let stockObject = StockObject.init(symbol: symbol, lastTradePriceOnly: lastTradePriceOnly, change: change, yearLow: yearLow, yearHigh: yearHigh){
                                  self.stockSymbolsArray.append(stockObject)
                             }
                         }

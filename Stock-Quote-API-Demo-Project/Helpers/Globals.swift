@@ -13,6 +13,7 @@ import UIKit
 struct Globals {
     //The url for the only call this app makes. It's still good practice to keep it as a reusable string to keep with best practices, and for easy readability later.
     static let kStockInfoURL = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%20in%20(%22YHOO%22%2C%22AAPL%22%2C%22GOOG%22%2C%22MSFT%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
+    static let kQuotesObtainedNotification = "kQuotesObtainedNotification"
 }
 
 //A utility function I wrote to change the second half of a string to be green. This is to show a positive change in "change" that comes back when looking up a stock

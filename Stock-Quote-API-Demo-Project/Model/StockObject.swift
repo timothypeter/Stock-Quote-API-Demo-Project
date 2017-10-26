@@ -17,7 +17,7 @@ struct StockObject {
     var yearHigh:String
     
 
-    init?(name: String, symbol: String, lastTradePriceOnly: String, change: String, yearLow: String, yearHigh: String){
+    init?(symbol: String, lastTradePriceOnly: String, change: String, yearLow: String, yearHigh: String){
        
         guard(!symbol.isEmpty), (!lastTradePriceOnly.isEmpty), (!change.isEmpty), (!yearLow.isEmpty), (!yearHigh.isEmpty) else{
             print("Failed")
