@@ -22,8 +22,6 @@ class NetworkTest: XCTestCase {
         super.tearDown()
     }
     
-    //This tests the main server call I use in the app. However, this has to be written differently due to the fact that if I use my "router" file that I have from Alamofire, the test will succeed without waiting for the async call to finish. This approach is directly from Apple's documentation. https://developer.apple.com/documentation/xctest/asynchronous_tests_and_expectations/testing_asynchronous_operations_with_expectations
-    
     func testStockInfoCall() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -35,23 +33,6 @@ class NetworkTest: XCTestCase {
         
         // Create a background task to download the web page.
         let dataTask = URLSession.shared.dataTask(with: url) { (data, _, _) in
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
-                if let query = json["query"] as? [String: Any]{
-                    if let results = query["results"] as? [String: Any]{
-                        if let quotes = results["quote"] as? [[String: Any]]{
-                            for quote in quotes{
-                                
-                            }
-                        }
-                        
-                    }
-                }
-                
-            } catch let error as NSError {
-                print(error)
-            }
             
             // Make sure we downloaded some data.
             XCTAssertNotNil(data, "No data was downloaded.")
