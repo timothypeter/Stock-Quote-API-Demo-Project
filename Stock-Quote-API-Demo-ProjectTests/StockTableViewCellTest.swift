@@ -33,11 +33,6 @@ class StockTableViewCellTest: XCTestCase {
         cell = nil
     }
     
-    //This tests the check I wrote in StockTableViewCell.swift to see if both labels in the cell have text
-    func testToSeeIfBothLabelsHaveValues() {
-        XCTAssertTrue(cell.doLabelsHaveText(), "Stock cell didn't present strings in both labels!")
-    }
-    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

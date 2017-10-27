@@ -35,12 +35,6 @@ class StockObjectTest: XCTestCase {
         //Best practice to set to nil in teardown when done. This obviously can't be done on strings because in Swift you can't set a string to nil.
     }
     
-    //I don't want a stock object to be added to my tableView if it doesn't have a symbol or a trade price. It must have bother. The object is allowed to initialize, but it will not be used.
-    func testForSymbolAndTradePrice() {
-        //Generates a failure when expression == false.
-       // XCTAssertTrue(stockObject.verifySuccessfulInit(), "Stock object has an empty symbol or price!")
-    }
-    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

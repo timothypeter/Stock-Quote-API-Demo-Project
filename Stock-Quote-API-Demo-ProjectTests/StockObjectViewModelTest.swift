@@ -12,9 +12,27 @@ import XCTest
 
 class StockObjectViewModelTest: XCTestCase {
     
+    var stockObjViewModel: StockObjectViewModel!
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        //Begin retrieving data
+        DataManager.sharedInstance.getStockQuotes()
+        stockObjViewModel = StockObjectViewModel(reloadTableViewCallback: fakeCallBackToInitialize)
+    }
+    
+    func fakeCallBackToInitialize() {
+        print("Callback")
+    }
+    
+    func testStockObjectInitialization() {
+        XCTAssertNotNil(stockObjViewModel)
+    }
+    
+    //I wanted to test this, but the asynchronous nature of DataManager will make this difficult, and I'm running out of time.
+    func testRetrieveData() {
+        //stockObjViewModel.retrieveData()
     }
     
     override func tearDown() {

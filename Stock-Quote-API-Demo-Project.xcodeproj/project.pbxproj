@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22094BBB1F9D20E20093B5FE /* StockTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22094BBA1F9D20E20093B5FE /* StockTableViewCellTest.swift */; };
 		225770831F9AC7A00030F5FE /* StockObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225770821F9AC7A00030F5FE /* StockObject.swift */; };
+		225CEEF41FA2F7B700BCB419 /* DetailsViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225CEEF31FA2F7B700BCB419 /* DetailsViewControllerTest.swift */; };
 		2260C5C51FA0786A002551E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260C5C41FA0786A002551E2 /* Extensions.swift */; };
 		2260C5C81FA0FB5A002551E2 /* StockObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260C5C71FA0FB5A002551E2 /* StockObjectViewModel.swift */; };
 		2260C5CA1FA11988002551E2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260C5C91FA11988002551E2 /* DataManager.swift */; };
@@ -54,6 +55,7 @@
 		1FA463C1826F9D6CB23A49AD /* Pods-Stock-Quote-API-Demo-ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stock-Quote-API-Demo-ProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stock-Quote-API-Demo-ProjectTests/Pods-Stock-Quote-API-Demo-ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		22094BBA1F9D20E20093B5FE /* StockTableViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCellTest.swift; sourceTree = "<group>"; };
 		225770821F9AC7A00030F5FE /* StockObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockObject.swift; sourceTree = "<group>"; };
+		225CEEF31FA2F7B700BCB419 /* DetailsViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewControllerTest.swift; sourceTree = "<group>"; };
 		2260C5C41FA0786A002551E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2260C5C71FA0FB5A002551E2 /* StockObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockObjectViewModel.swift; sourceTree = "<group>"; };
 		2260C5C91FA11988002551E2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		22FAA3861F998D9800346117 /* Stock-Quote-API-Demo-ProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				225CEEF31FA2F7B700BCB419 /* DetailsViewControllerTest.swift */,
 				227603571FA296E900A945E4 /* StockSymbolsViewControllerTest.swift */,
 				227603551FA1C74000A945E4 /* StockObjectViewModelTest.swift */,
 				22094BBA1F9D20E20093B5FE /* StockTableViewCellTest.swift */,
@@ -573,6 +576,7 @@
 				227603581FA296E900A945E4 /* StockSymbolsViewControllerTest.swift in Sources */,
 				22A867511F9C392F00334526 /* NetworkTest.swift in Sources */,
 				22A867551F9C829300334526 /* Globals.swift in Sources */,
+				225CEEF41FA2F7B700BCB419 /* DetailsViewControllerTest.swift in Sources */,
 				227D87041F9BE5C700AF2B39 /* StockObject.swift in Sources */,
 				227603561FA1C74000A945E4 /* StockObjectViewModelTest.swift in Sources */,
 			);

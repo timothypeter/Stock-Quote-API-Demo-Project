@@ -60,17 +60,8 @@ class StockSymbolsViewController: UIViewController, UITableViewDelegate, UITable
         if(self.stockSymbolsArray.count > 0){
             cell.symbolLabel.text = self.stockSymbolsArray[indexPath.row].symbol
             cell.lastTradePriceOnlyLabel.text = self.stockSymbolsArray[indexPath.row].lastTradePriceOnly
-            
-            //Run the test inside of the cell's class implementation to see whether it has the information it needs
-            if(cell.doLabelsHaveText()){
-                return cell
-            }
-            
-            else{
-                cell.symbolLabel.text = "N/A"
-                cell.lastTradePriceOnlyLabel.text = "N/A"
-                return cell
-            }
+
+            return cell
         }
         
         return cell
